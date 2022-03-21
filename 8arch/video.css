@@ -1,0 +1,27 @@
+textarea {
+    font-family:monospace;
+    background-color: #2b2d2f;
+}
+
+:root {
+    --code-color: rgba(0, 0, 0, 0);
+    --code-bg-color: #f6f6f600;
+    --code-font-size: 14px;
+    --code-line-height: 1.4;
+    --scroll-bar-color: #00000080;
+    --scroll-bar-bg-color: #141a0d7a;
+}
+
+*::-webkit-scrollbar {
+    width: 5px;
+}
+
+*::-webkit-scrollbar-track {
+    background: var(--scroll-bar-bg-color);
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--scroll-bar-color);
+    border-radius: 20px;
+    border: 3px solid var(--scroll-bar-bg-color);
+}
