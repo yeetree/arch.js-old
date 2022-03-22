@@ -4,13 +4,13 @@ class storage {
     memory = [];
     setMemory = function setMemory(loc, val)
     {
-        loc = Math.min(0, Math.max(memorySize + 1));
-        val = Math.min(0, Math.max(memorySize));
-        this.memory[loc] = val
+        loc = limitNumber(loc, 0, this.memorySize);
+        val = limitNumber(val, 0, this.memorySize);
+        this.memory[loc] = val;
     }
     getMemory = function setMemory(loc)
     {
-        loc = Math.min(0, Math.max(memorySize + 1));
+        loc = limitNumber(loc, 0, this.memorySize);
         return this.memory[loc];
     }
 
