@@ -1,0 +1,42 @@
+A number has to exist in memory to reference a memory location (system or video) to use it. All arguments
+in instructions reference a memory location. The value will always be set to the first argument.
+
+EG:
+    set,0,1;
+    set,1,1;
+    add,0,1;
+
+This makes memory location 0 equal to 2.
+
+When using 'movev', 'swapv', 'mover', or 'swapr'; the arguments will always reference system memory locations, but
+the value will correspond to either a system or video memory location.
+
+EG:
+    set,0,97;
+    set,1,0;
+    movev,0,1;
+
+This will set the video memory value 0, as specified in system memory value 1, to 97, the UTF-16 code for a lowercase A as
+specified in system memory value 0.
+
+This may seem overly complex and unnessesary, but it can be useful and most applications.
+
+EG:
+  set,0,0;
+  set,1,1;
+  set,2,0;
+
+  func,1,4;
+  in,2;
+  movev,2,0;
+  add,0,1;
+  update;
+
+  loop,1,5;
+  call,1;
+
+This program inputs 5 characters and stores the character in system memory 2, then moves them to video memory in order
+of 0-4. So thats why all of these rules are in place, so that the more complex programs can work, and it only takes one
+more line for regular programs.
+
+See INSTRUCTIONS.txt for a list of instructions, and what they do.
