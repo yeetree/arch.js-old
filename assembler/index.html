@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>Arch.js Assembler</title>
+        <script src="./asm.js"></script>
+    </head>
+    <body>
+        <textarea rows=30 cols=70 id="prg">set,0,97;
+movev,0,0;
+update</textarea>
+        <textarea rows=30 cols=70 id="compile" style="margin-right:true"></textarea>
+        <script>
+            prgBOX = document.getElementById("prg");
+            compileBOX = document.getElementById("compile");
+            asm = new asm;
+            function removeLineBreak(str) {
+                return str.replaceAll(/(\r\n|\n|\r|\s)/gm, " ").replaceAll(' ', "");
+            }
+        </script>
+        <button onclick="compileBOX.value = asm.compile(removeLineBreak(prgBOX.value));">Compile</button>
+    </body>
+</html>

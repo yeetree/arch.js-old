@@ -1,43 +1,27 @@
 <html>
     <head>
         <title>arch.js</title>
-        <link rel="stylesheet" href="./8arch/video.css">
-        <link rel="stylesheet" href="./8arch/vm.css">
-        <script src="./8arch/video.js"></script>
-        <script src="./8arch/input.js"></script>
-        <script src="./8arch/memory.js"></script>
-        <script src="./8arch/storage.js"></script>
+        <link rel="stylesheet" href="./arch/video.css">
+        <link rel="stylesheet" href="./arch/vm.css">
+        <script src="./arch/video.js"></script>
+        <script src="./arch/input.js"></script>
+        <script src="./arch/memory.js"></script>
+        <script src="./arch/storage.js"></script>
     </head>
     <body>
         <div id="8arch">
         </div>
-        <script>
-            gfx = new video;
-            ram = new memory;
-            store = new storage;
-            if(store.memoryExists())
-            {
-                store.loadMemory();
-            }
-            else
-            {
-                store.init();
-                store.saveMemory();
-            }
-            gfx.init();
-            input_init();
-            ram.init();
-        </script>
+        <script src="./arch/arch.js"></script>
 
         <!-- Debug -->
 
         <div class="dropdown">
             <span>Options</span>
             <div class="dropdown-content">
-                <button onclick="ram.init();">Reset RAM</button>
-                <button onclick="gfx.init();">Reset VRAM</button>
-                <button onclick="store.loadMemory();">Load Storage</button>
-                <button onclick="store.saveMemory();">Save Storage</button>
+                <button onclick="arch.ram.init();">Reset RAM</button>
+                <button onclick="arch.gfx.init();">Reset VRAM</button>
+                <button onclick="arch.store.loadMemory();">Load Storage</button>
+                <button onclick="arch.store.saveMemory();">Save Storage</button>
             </div>
         </div>
     </body>
