@@ -47,10 +47,14 @@ class asm
         ['VLOOP', 3, 37],
 
         ['FUNC', 1, 38],
-        ['VFUNC', 1, 39],
+        ['CALL', 1 , 39],
 
-        ['CALL', 1 , 40],
-        ['VCALL', 1 , 41]
+        //Storage
+
+        ['LD', 3, 40],
+        ['SV', 3, 41],
+
+
     ]
     prg = [];
     lines = [];
@@ -286,6 +290,16 @@ class asm
             case "CALL":
                 prgSeg.push(39);
                 prgSeg.push(inst[1]);
+                break;
+            case "LD":
+                prgSeg.push(40);
+                prgSeg.push(inst[1]);
+                prgSeg.push(inst[2]);
+                break;
+            case "SV":
+                prgSeg.push(41);
+                prgSeg.push(inst[1]);
+                prgSeg.push(inst[2]);
                 break;
         }
         
