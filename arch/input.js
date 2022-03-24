@@ -3,14 +3,22 @@ keystr = "";
 currentkey = "";
  
 keyDown = function keyDown(e){
-    keystr += e.key.toString() + ","
-    keys = keystr.split(",");
-    this.currentkey = e.key.toString();
+    this.keystr += e.key.toString() + ","
+    this.keys = keystr.split(",");
+    if(e.location = 0)
+    {
+        this.currentkey = e.key.toString();
+    }
 };
+
+
 keyUp = function keyUp(e){
-    keystr.replace(e.key.toString, "");
-    keys = keystr.split(",");
-    this.currentkey = "";   
+    this.keystr.replace(e.key.toString() + ",", "");
+    this.keys = keystr.split(",");
+    if(this.currentkey == e.key.toString())
+    {
+        this.currentkey = "";
+    }
 };
 
 input_init = function init()

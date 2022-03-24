@@ -40,13 +40,13 @@ class videoMemory
     memorySize = 2**16;
     memory = [];
     lines = [0]
-    setMemory = function setMemory(loc, val)
+    set = function setMemory(loc, val)
     {
         loc = limitNumber(loc, 0, this.memorySize);
         val = limitNumber(val, 0, this.memorySize);
         this.memory[loc] = val;
     }
-    getMemory = function setMemory(loc)
+    get = function setMemory(loc)
     {
         loc = limitNumber(loc, 0, this.memorySize);
         if(this.memory.length < loc)

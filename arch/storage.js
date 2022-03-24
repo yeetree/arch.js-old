@@ -2,24 +2,24 @@ class storage {
     memoryID = 0;
     memorySize = 2**16;
     memory = [];
-    setMemory = function setMemory(loc, val)
+    set = function setMemory(loc, val)
     {
         loc = limitNumber(loc, 0, this.memorySize);
         val = limitNumber(val, 0, this.memorySize);
         this.memory[loc] = val;
     }
-    getMemory = function setMemory(loc)
+    getInst = function setMemory(loc)
     {
         loc = limitNumber(loc, 0, this.memorySize);
         return this.memory[loc];
     }
 
-    saveMemory = function saveMemory()
+    save = function saveMemory()
     {
         localStorage.setItem("storage_" + this.memoryID, JSON.stringify(this.memory));
     }
 
-    loadMemory = function loadMemory()
+    load = function loadMemory()
     {
         this.memory = JSON.parse(localStorage.getItem("storage_" + this.memoryID));
     }
