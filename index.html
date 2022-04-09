@@ -7,6 +7,7 @@
         <script src="./arch/input.js"></script>
         <script src="./arch/memory.js"></script>
         <script src="./arch/storage.js"></script>
+        <script src="./arch/arch_16.js"></script>
     </head>
     <body>
         <div id="8arch">
@@ -24,8 +25,8 @@
             <div class="dropdown-content">
                 <button onclick="arch16.ram.init();">Reset RAM</button>
                 <button onclick="arch16.gfx.init();">Reset VRAM</button>
-                <button onclick="arch16.store.loadMemory();">Load Storage</button>
-                <button onclick="arch16.store.saveMemory();">Save Storage</button>
+                <button onclick="arch16.store.load();">Load Storage</button>
+                <button onclick="arch16.store.save();">Save Storage</button>
             </div>
         </div>
     </body>

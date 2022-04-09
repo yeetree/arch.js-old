@@ -8,7 +8,8 @@ class arch_16
 
     init = function init()
     {
-        this.ram = setSameArrays(this.store.memory, this.ram.memory, 0, this.bootRead - 1)
+        this.ram.memory = setSameArrays(this.store.memory, this.ram.memory, 0, this.bootRead - 1)
+        this.arch_v1();
     }
     
     arch_v1 = function arch_1()
@@ -122,7 +123,7 @@ class arch_16
                     }
                     this.ram.set(this.ram.get(this.ram.get(i + 1)), parseInt(this.input.currentkey));
                     break;
-                case 21:
+                case 22:
                     while(parseInt(this.input.currentkey) == NaN || ((parseInt(this.input.currentkey) < this.ram.get(this.ram.get(i + 1)) || parseInt(this.input.currentkey) < this.ram.get(this.ram.get(i + 2)))))
                     {
                         //Literally nothing
@@ -137,7 +138,7 @@ class arch_16
 
 function setSameArrays(a,b,c,d)
 {
-    e = a.split(c,d);
+    e = a.splice(c,d);
     for(let i = 0; i < a.length; i++)
     {
         b[i] = e[i];

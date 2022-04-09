@@ -28,7 +28,7 @@ class video {
         for(let i = 0; i < this.vram.memory.length; i++)
         {
 
-            temp_vram += String.fromCharCode(this.vram.getMemory(i));
+            temp_vram += String.fromCharCode(this.vram.get(i));
         }
         this.text.value = temp_vram;
         this.text.scrollTop = this.text.scrollHeight;
