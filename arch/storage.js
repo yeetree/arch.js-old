@@ -1,67 +1,28 @@
 class storage {
-    memoryID = 0;
-    memorySize = 2**16;
-    memory = [];
-    set = function setMemory(loc, val)
-    {
-        loc = limitNumber(loc, 0, this.memorySize);
-        val = limitNumber(val, 0, this.memorySize);
-        this.memory[loc] = val;
-    }
-    getInst = function setMemory(loc)
-    {
-        loc = limitNumber(loc, 0, this.memorySize);
-        return this.memory[loc];
-    }
-
-    save = function saveMemory()
-    {
-        localStorage.setItem("storage_" + this.memoryID, JSON.stringify(this.memory));
-    }
-
-    load = function loadMemory()
-    {
-        this.memory = JSON.parse(localStorage.getItem("storage_" + this.memoryID));
-    }
-
-    memoryExists = function memoryExists()
-    {
-        if(localStorage.getItem("storage_" + this.memoryID))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
-    saveFile = function saveFile()
-    {
-        downloadString(JSON.stringify(this.memory), "text/txt", "storage_" + memoryID + ".txt")
-    }
-
     
+    memory;
+    default = 0;
 
-    init = function()
+    init = function () {
+        this.memory = new memory;
+        this.memory.init();
+        this.load(this.default);
+    }
+    save = function(slot)
     {
-        let mem = [];
-        mem.length = this.memorySize;
-        mem.fill(0);
-        this.memory = mem;
+        let memstr = JSON.stringify(this.memory.data);
+        window.localStorage.setItem('storage_' + slot, memstr);
+        this.load(slot);
+    }
+    load = function(slot)
+    {
+        if(window.localStorage.getItem('storage_' + slot) == null || window.localStorage.getItem('storage_' + slot) == "[]")
+        {
+            let tempmem = new memory;
+            tempmem.init();
+            let memstr = JSON.stringify(tempmem.data);
+            window.localStorage.setItem('storage_' + slot, memstr);
+        }
+        this.memory.data = JSON.parse(window.localStorage.getItem('storage_' + slot));
     }
 }
-
-function downloadString(text, fileType, fileName) {
-    var blob = new Blob([text], { type: fileType });
-  
-    var a = document.createElement('a');
-    a.download = fileName;
-    a.href = URL.createObjectURL(blob);
-    a.dataset.downloadurl = [fileType, a.download, a.href].join(':');
-    a.style.display = "none";
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    setTimeout(function() { URL.revokeObjectURL(a.href); }, 1500);
-  }

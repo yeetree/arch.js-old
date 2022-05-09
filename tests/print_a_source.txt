@@ -1,3 +1,0 @@
-set,7,97;
-movev,7,0;
-update

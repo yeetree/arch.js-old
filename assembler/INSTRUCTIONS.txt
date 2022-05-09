@@ -5,9 +5,7 @@
 
 MEMORY:
 ------------------------------------------------
-(v)set,0,1; - Sets [0] to -1-
-
-(v)move,0,1; - Sets [0] to [1].
+(v)move,0,1; - Sets [1] to [0].
 
 (v)swap,0,1; - Sets [1] to [0] and [0] to [1].
 
@@ -43,32 +41,22 @@ rin,0,1,2; - Inputs a number and clamps it between [1] and [2] and stores it at 
 
 CONTROL:
 ------------------------------------------------
-ifeq,0,1,2; - If [0] = [1], then do the [2] lines after it, or skip.
+(v)ifeq,0,1,2; - If [0] = [1], then do the [2] lines after it, or skip.
 
-noteq,0,1,2; - If [0] doesn't = [1], then do the [2] lines after it, or skip.
+(v)noteq,0,1,2; - If [0] doesn't = [1], then do the [2] lines after it, or skip.
 
-ifgt,0,1,2; - If [0] > [1], then do the [2] lines after it, or skip.
+(v)ifgt,0,1,2; - If [0] > [1], then do the [2] lines after it, or skip.
 
-notgt,0,1,2; - If [0] isn't > [1], then do the [2] lines after it, or skip.
+(v)notgt,0,1,2; - If [0] isn't > [1], then do the [2] lines after it, or skip.
 
-iflt,0,1,2; - If [0] < [1], then do the [2] lines after it, or skip.
+(v)iflt,0,1,2; - If [0] < [1], then do the [2] lines after it, or skip.
 
-notlt,0,1,2; - If [0] isn't < [1], then do the [2] lines after it, or skip.
+(v)notlt,0,1,2; - If [0] isn't < [1], then do the [2] lines after it, or skip.
 
 
-while,0,1,2; - While [0] doesn't = [1], repeat the [2] lines after it and go back to the top at the end, or skip.
+(v)while,0,1,2; - While [0] doesn't = [1], repeat the [2] lines after it and go back to the top at the end, or skip.
 
-loop,0,1; - Repeat the [0] lines after it, and go back to the top [1] times.
+(v)loop,0,1; - Repeat the [0] lines after it, and go back to the top [1] times.
 
 func,0,1; - Make function with call ID [0] that does the [1] lines after it.
 call,0; - Calls function with call ID [0].
-
-STORAGE
-
-ld,0,1,2; - Loads storage locations /0/-/1/ to start of [2]
-
-EXECUTION
-
-exec,0,1; - Resets VRAM and RAM after executing memory location [0]-[1].
-execo,0,1; - Offsets RAM and Resets VRAM after executing memory location [0]-[1], then returns to original location.
-execr,0,1,2,3; - Resets VRAM and RAM after executing memory location [0]-[1], then returns to [2]-[3].

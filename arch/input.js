@@ -1,45 +1,63 @@
-keys = [];
-keystr = "";
-currentkey = "";
- 
-keyDown = function keyDown(e){
-    this.keystr += e.key.toString() + ","
-    this.keys = keystr.split(",");
-    if(e.location = 0)
-    {
-        this.currentkey = e.key.toString();
-    }
-};
+class input {
+    key;
+    keys = [];
+    readKey = false;
 
-
-keyUp = function keyUp(e){
-    this.keystr.replace(e.key.toString() + ",", "");
-    this.keys = keystr.split(",");
-    if(this.currentkey == e.key.toString())
-    {
-        this.currentkey = "";
-    }
-};
-
-input_init = function init()
-{
-    window.addEventListener("keydown",
-        function(e)
+    text = "notmade";
+    
+    /*
+    keydown = function(e) {
+        let ekey = e.key.toString();
+        self.key = ace.indexOf(ekey);
+        self.keys[ace.indexOf(ekey)] = true;
+        if(self.readKey)
         {
-            if(isFocus)
-            {
-                keyDown(e);
-            }
-        },
-    false);
-
-    window.addEventListener('keyup',
-        function(e)
+            console.log(ekey + ": down");
+        }
+    }
+    keyup = function(e) {
+        let ekey = e.key;
+        if(e.target.key == ekey)
         {
-            if(isFocus)
+            self.key = "";
+        }
+        self.keys[ace.indexOf(ekey)] = false;
+        if(self.readKey)
+        {
+            console.log(ekey + ": up");
+        }
+    }
+    */
+
+    init = function ()
+    {
+        this.key = undefined;
+        this.keys = [];
+        this.keys.length = ace.length;
+        this.keys.fill(false);
+
+        var self = this;
+
+        this.text.addEventListener("keydown", e => {
+            let ekey = e.key.toString();
+            self.key = ace.indexOf(ekey);
+            self.keys[ace.indexOf(ekey)] = true;
+            if(self.readKey)
             {
-                keyUp(e);
+                console.log(ekey + ": down");
             }
-        },
-    false);
+        });
+        this.text.addEventListener("keyup", e => {
+            let ekey = e.key;
+            if(ace[self.key] == ekey)
+            {
+                self.key = -1;
+            }
+            self.keys[ace.indexOf(ekey)] = false;
+            if(self.readKey)
+            {
+                console.log(ekey + ": up");
+            }
+        });
+    }
 }

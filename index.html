@@ -1,34 +1,35 @@
 <html>
     <head>
-        <title>arch.js</title>
+        <title>Arch.JS</title>
         <link rel="stylesheet" href="./arch/video.css">
-        <link rel="stylesheet" href="./arch/vm.css">
-        <script src="./arch/video.js"></script>
-        <script src="./arch/input.js"></script>
+
+        <script src="./arch/misc.js"></script>
+        <script src="./arch/ace.js"></script>
+
         <script src="./arch/memory.js"></script>
         <script src="./arch/storage.js"></script>
-        <script src="./arch/arch_16.js"></script>
+        <script src="./arch/video.js"></script>
+        <script src="./arch/input.js"></script>
+        
+        <link rel="stylesheet" href="./vm.css">
     </head>
     <body>
-        <div id="8arch">
+        <div id="video">
         </div>
-        <script src="./arch/arch.js"></script>
-        <script>
-            arch16 = new arch;
-            arch16.init();
-        </script>
 
-        <!-- Debug -->
-
+        <script src="./vm.js"></script>
+        
         <div class="dropdown">
-            <span>Options</span>
+            <button class="dropbtn">Options</button>
             <div class="dropdown-content">
-                <button onclick="arch16.ram.init();">Reset RAM</button>
-                <button onclick="arch16.gfx.init();">Reset VRAM</button>
-                <button onclick="arch16.store.load();">Load Storage</button>
-                <button onclick="arch16.store.save();">Save Storage</button>
+                <p>Storage Slot</p>
+                <input type="number" id="slot" value="0"></input>
+                <a onclick="saveStorage()">Save Storage</a>
+                <a onclick="loadStorage()">Load Storage</a>
+                <a onclick="arch.memory.init()">Reset RAM</a>
             </div>
-        </div>
+        </div> 
+        <script src="./system/arch16_funcs.js"></script>
+        <script src="./system/arch16.js"></script>
     </body>
 </html>
-

@@ -1,26 +1,37 @@
-function limitNumber(val, min, max) {
-    return Math.min(Math.max(min, +val), max);
-}
+// Arch.js Memory
 
 class memory {
-    memorySize = 2**16;
-    memory = [];
-    set = function setMemory(loc, val)
-    {
-        loc = limitNumber(loc, 0, this.memorySize);
-        val = limitNumber(val, 0, this.memorySize);
-        this.memory[loc] = val;
-    }
-    get = function setMemory(loc)
-    {
-        loc = limitNumber(loc, 0, this.memorySize);
-        return this.memory[loc];
-    }
-    init = function()
+    
+    data = [];
+    bits = 16;
+    default = 0;
+
+    init = function ()
     {
         let mem = [];
-        mem.length = this.memorySize;
-        mem.fill(0);
-        this.memory = mem;
+        mem.length = (2**this.bits)-1;
+        mem.fill(this.default);
+        this.data = mem;
+    }
+    get = function (loc)
+    {
+        loc = limitNumber(loc, 0, (2**this.bits)-1);
+        return this.data[loc];
+    }
+    set = function (loc, val)
+    {
+        loc = limitNumber(loc, 0, (2**(this.bits))-1);
+        val = limitNumber(val, 0, (2**(this.bits))-1);
+        this.data[loc] = val;
+    }
+    sget = function (loc) { return this.get(this.get(loc)) }
+    
+    loadString = function(start, string)
+    {
+        let str = JSON.parse(string);
+        for(let i = 0; i < str.length; i++)
+        {
+            this.set(i, str[i]);
+        }
     }
 }
